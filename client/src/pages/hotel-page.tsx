@@ -57,45 +57,46 @@ export default function HotelPage() {
   return (
     <div className="min-h-screen bg-background">
       <div 
-        className="h-[40vh] bg-cover bg-center relative"
+        className="h-[30vh] bg-cover bg-center"
         style={{ backgroundImage: `url(${hotel.mainImage})` }}
-      >
-        {hotel.virtualTourUrl && (
-          <div className="absolute top-4 right-4">
-            <a
-              href={hotel.virtualTourUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="secondary" className="gap-2">
-                <Video className="h-4 w-4" />
-                Take Virtual Tour
-              </Button>
-            </a>
-          </div>
-        )}
-      </div>
+      />
 
       <main className="container mx-auto px-4 py-8">
-        <Link href="/">
+        <Link href={`/hotels/${hotel.id}`}>
           <Button variant="ghost" className="mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Hotels
+            Back to Hotel
           </Button>
         </Link>
 
         <Card>
           <CardHeader>
-            <div className="flex items-center gap-2">
-              <CardTitle className="text-3xl">{hotel.name}</CardTitle>
-              <div className="flex items-center gap-1 text-primary">
-                <Star className="fill-current h-5 w-5" />
-                <span className="text-lg">{(hotel.rating ?? 0).toFixed(1)}</span>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-3xl">{hotel.name}</CardTitle>
+                <CardDescription>{hotel.location}</CardDescription>
               </div>
+              {hotel.virtualTourUrl && (
+                <a
+                  href={hotel.virtualTourUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-4"
+                >
+                  <Button variant="secondary" className="gap-2">
+                    <Video className="h-4 w-4" />
+                    Take Virtual Tour
+                  </Button>
+                </a>
+              )}
             </div>
-            <CardDescription>{hotel.location}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
+            <div className="flex items-center gap-2 text-primary">
+              <Star className="fill-current h-5 w-5" />
+              <span className="text-lg font-semibold">{(hotel.rating ?? 0).toFixed(1)}</span>
+            </div>
+
             <p className="text-lg">{hotel.description}</p>
 
             {hotel.amenities && hotel.amenities.length > 0 && (
