@@ -35,10 +35,13 @@ export default function BookingPage() {
   const { user } = useAuth();
 
   // Redirect if not logged in
-  if (!user) {
-    setLocation("/auth");
-    return null;
-  }
+  useEffect(() => {
+    if (!user) {
+      setLocation("/auth");
+    }
+  }, [user, setLocation]);
+
+  if (!user) return null;
 
   const { data: hotel } = useQuery<Hotel>({
     queryKey: [`/api/hotels/${params?.id}`],
