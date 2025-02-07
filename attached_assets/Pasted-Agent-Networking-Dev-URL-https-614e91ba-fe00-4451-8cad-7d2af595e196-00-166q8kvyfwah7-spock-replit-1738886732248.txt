@@ -1,0 +1,92 @@
+Agent
+Networking
+Dev URL:
+https://614e91ba-fe00-4451-8cad-7d2af595e196-00-166q8kvyfwah7.spock.replit.dev/
+Dev URLs are temporary and will sleep after you leave the workspace.
+Ports
+Learn more
+Internal Port
+External Port
+Name
+Pid
+0.0.0.0:5000
+This port config is saved in the .
+Secrets
+Secrets are accessible to anyone who has access to this App. To restrict secret access, you must update App invite permissions. For more information, visit our documentation.
+PGDATABASE
+••••••••
+PGHOST
+••••••••
+PGPORT
+••••••••
+PGUSER
+••••••••
+PGPASSWORD
+••••••••
+DATABASE_URL
+••••••••
+Webview
+Preview your App as a web application
+No web server is currently running with ports available to view. Try running your App, and check the 
+ to ensure ports are being forwarded correctly.
+Diff: booking.tsx
+
+
+Unified
+
+Split
+⦚ 80 unchanged lines ⦚
+                    <Calendar
+                      mode="single"
+                      selected={field.value ? new Date(field.value) : undefined}
+                      onSelect={(date: Date | undefined) => field.onChange(date?.toISOString())}
+                      initialFocus
+                    />
+                  </PopoverContent>
+⦚ 21 unchanged lines ⦚
+                    <Calendar
+                      mode="single"
+                      selected={field.value ? new Date(field.value) : undefined}
+                      onSelect={(date: Date | undefined) => field.onChange(date?.toISOString())}
+                      initialFocus
+                    />
+                  </PopoverContent>
+⦚ 26 unchanged lines ⦚
+⦚ 80 unchanged lines ⦚
+                    <Calendar
+                      mode="single"
+                      selected={field.value ? new Date(field.value) : undefined}
+                      onSelect={(date: Date | undefined) => field.onChange(date?.toISOString() || '')}
+                      initialFocus
+                    />
+                  </PopoverContent>
+⦚ 21 unchanged lines ⦚
+                    <Calendar
+                      mode="single"
+                      selected={field.value ? new Date(field.value) : undefined}
+                      onSelect={(date: Date | undefined) => field.onChange(date?.toISOString() || '')}
+                      initialFocus
+                    />
+                  </PopoverContent>
+⦚ 26 unchanged lines ⦚
+Console
+Results of your code will appear here when you run
+Default
+Workflows
+Agent
+An Afrocentric hotel booking website that celebrates African culture and hospitality through its design and functionality.
+
+Core Features:
+
+Interactive and animated user interface with Afrocentric design elements
+Hotel registration system with a two-month free trial for new listings
+Personalized hotel suggestions based on user's past choices and current location
+Multi-currency payment system supporting both local and international currencies
+Virtual tour functionality for hotels to showcase their properties and for clients to explore
+Visual References:
+Inspired by Jumia Travel and Expedia, known for their user-friendly interfaces, but with a distinct Afrocentric aesthetic incorporating vibrant colors, patterns, and imagery reflective of African art and culture.
+
+Style Guide:
+
+Colors: Primary #FFA500 (orange), Secondary #008000 (green), Accent #800080 (purple), Background #FFF5E6 (light cream), Text #333333 (dark grey)
+Design: Adinkra/Lato/Ubuntu fonts, bold geometric patterns inspired by African textiles, card-based layout for hotel listings, smooth transitions and micro-interactions, responsive design optimized for mobile devices
