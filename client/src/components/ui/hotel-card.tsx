@@ -14,7 +14,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { Star, ChevronDown, ChevronUp, Video, Utensils } from "lucide-react";
+import { Star, ChevronDown, ChevronUp, Video } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -34,17 +34,18 @@ export function HotelCard({ hotel }: HotelCardProps) {
           className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
         />
         {hotel.virtualTourUrl && (
-          <a
-            href={hotel.virtualTourUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-2 right-2"
-          >
-            <Button size="sm" variant="secondary" className="gap-2">
-              <Video className="h-4 w-4" />
-              Virtual Tour
-            </Button>
-          </a>
+          <div className="absolute top-2 right-2 flex gap-2">
+            <a
+              href={hotel.virtualTourUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="sm" variant="secondary" className="gap-2">
+                <Video className="h-4 w-4" />
+                Virtual Tour
+              </Button>
+            </a>
+          </div>
         )}
       </div>
       <CardHeader>
@@ -62,8 +63,7 @@ export function HotelCard({ hotel }: HotelCardProps) {
           <Collapsible open={isOpen} onOpenChange={setIsOpen}>
             <CollapsibleTrigger asChild>
               <Button variant="outline" size="sm" className="w-full gap-2">
-                <Utensils className="h-4 w-4" />
-                Amenities
+                View Amenities
                 {isOpen ? (
                   <ChevronUp className="h-4 w-4 ml-auto" />
                 ) : (
@@ -102,9 +102,14 @@ export function HotelCard({ hotel }: HotelCardProps) {
           <p className="text-lg font-bold">${hotel.pricePerNight}</p>
           <p className="text-sm text-muted-foreground">per night</p>
         </div>
-        <Link href={`/hotels/${hotel.id}/book`}>
-          <Button>Book Now</Button>
-        </Link>
+        <div className="flex gap-2">
+          <Link href={`/hotels/${hotel.id}`}>
+            <Button variant="outline">View Details</Button>
+          </Link>
+          <Link href={`/hotels/${hotel.id}/book`}>
+            <Button>Book Now</Button>
+          </Link>
+        </div>
       </CardFooter>
     </Card>
   );
