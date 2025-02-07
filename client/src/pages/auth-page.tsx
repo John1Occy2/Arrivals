@@ -65,7 +65,7 @@ export default function AuthPage() {
                 <TabsTrigger value="login">Login</TabsTrigger>
                 <TabsTrigger value="register">Register</TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value="login">
                 <Form {...loginForm}>
                   <form
@@ -154,6 +154,31 @@ export default function AuthPage() {
                           <FormControl>
                             <Input type="password" {...field} />
                           </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={registerForm.control}
+                      name="isHotelOwner"
+                      render={({ field }) => (
+                        <FormItem className="bg-primary/5 p-4 rounded-lg border-2 border-primary/20">
+                          <div className="flex items-center space-x-2">
+                            <FormControl>
+                              <input
+                                type="checkbox"
+                                checked={field.value}
+                                onChange={field.onChange}
+                                className="w-4 h-4 text-primary"
+                              />
+                            </FormControl>
+                            <div className="space-y-1">
+                              <FormLabel>Register as Hotel Owner</FormLabel>
+                              <p className="text-sm text-muted-foreground">
+                                Get 2 months free trial to list your property
+                              </p>
+                            </div>
+                          </div>
                           <FormMessage />
                         </FormItem>
                       )}
