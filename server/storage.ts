@@ -39,9 +39,12 @@ export class DatabaseStorage implements IStorage {
           description: "Luxury lodge overlooking the Serengeti plains",
           location: "Serengeti, Tanzania",
           mainImage: "https://images.unsplash.com/photo-1611892440504-42a792e24d32",
+          virtualTourUrl: "https://example.com/virtual-tour/serengeti",
+          amenities: ["Wi-Fi", "Pool", "Restaurant", "Safari Tours", "Spa"],
           pricePerNight: 350,
           rating: 4.8,
-          ownerId: null
+          ownerId: null,
+          category: "Safari Lodge"
         });
 
         this.createHotel({
@@ -49,9 +52,12 @@ export class DatabaseStorage implements IStorage {
           description: "Beachfront resort with historic charm",
           location: "Cape Coast, Ghana",
           mainImage: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+          virtualTourUrl: "https://example.com/virtual-tour/capecoast",
+          amenities: ["Beach Access", "Pool", "Historical Tours", "Restaurant", "Bar"],
           pricePerNight: 250,
           rating: 4.5,
-          ownerId: null
+          ownerId: null,
+          category: "Beach Resort"
         });
       }
     });
@@ -90,7 +96,10 @@ export class DatabaseStorage implements IStorage {
       .values({
         ...insertHotel,
         rating: insertHotel.rating ?? 0,
-        ownerId: insertHotel.ownerId ?? null
+        ownerId: insertHotel.ownerId ?? null,
+        category: insertHotel.category ?? null,
+        amenities: insertHotel.amenities ?? [],
+        virtualTourUrl: insertHotel.virtualTourUrl ?? null
       })
       .returning();
     return hotel;

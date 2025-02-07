@@ -34,6 +34,12 @@ export default function BookingPage() {
   const { toast } = useToast();
   const { user } = useAuth();
 
+  // Redirect if not logged in
+  if (!user) {
+    setLocation("/auth");
+    return null;
+  }
+
   const { data: hotel } = useQuery<Hotel>({
     queryKey: [`/api/hotels/${params?.id}`],
   });
