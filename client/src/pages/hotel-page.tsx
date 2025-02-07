@@ -10,6 +10,41 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ArrowLeft, Video, Star } from "lucide-react";
+import { motion } from "framer-motion";
+
+// Mapping of amenities to their representative images
+const amenityImages: Record<string, string> = {
+  "Wi-Fi": "https://images.unsplash.com/photo-1563986768609-322da13575f3",
+  "Pool": "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7",
+  "Restaurant": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
+  "Spa": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874",
+  "Gym": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48",
+  "Room Service": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+  "Bar": "https://images.unsplash.com/photo-1543007630-9710e4a00a20",
+  "Conference Room": "https://images.unsplash.com/photo-1517502884422-41eaead166d4",
+  "Parking": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a",
+  "24/7 Reception": "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+  "Air Conditioning": "https://images.unsplash.com/photo-1551816230-ef5deaed4a26",
+  "Laundry Service": "https://images.unsplash.com/photo-1545173168-9f1947eebb7f",
+  "Safari Tours": "https://images.unsplash.com/photo-1516426122078-c23e76319801",
+  "Beach Access": "https://images.unsplash.com/photo-1519046904884-53103b34b206",
+  "Historical Tours": "https://images.unsplash.com/photo-1552863045-991883e6fb16"
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
 
 export default function HotelPage() {
   const [, params] = useRoute("/hotels/:id");
@@ -64,19 +99,34 @@ export default function HotelPage() {
             <p className="text-lg">{hotel.description}</p>
 
             {hotel.amenities && hotel.amenities.length > 0 && (
-              <div>
-                <h3 className="font-semibold mb-3">Amenities</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <h3 className="font-semibold text-xl mb-4">Amenities</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {hotel.amenities.map((amenity) => (
-                    <div
+                    <motion.div
                       key={amenity}
-                      className="text-sm bg-secondary/10 px-3 py-2 rounded-md"
+                      variants={itemVariants}
+                      className="relative group overflow-hidden rounded-lg"
                     >
-                      {amenity}
-                    </div>
+                      <div 
+                        className="aspect-video bg-cover bg-center"
+                        style={{ 
+                          backgroundImage: `url(${amenityImages[amenity] || 'https://images.unsplash.com/photo-1564501049412-61c2a3083791'})` 
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-white font-semibold text-lg">
+                          {amenity}
+                        </span>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )}
 
             <div className="flex justify-between items-center mt-6 pt-6 border-t">
