@@ -9,6 +9,7 @@ import AuthPage from "@/pages/auth-page";
 import HomePage from "@/pages/home-page";
 import HotelPage from "@/pages/hotel-page";
 import BookingPage from "@/pages/booking-page";
+import HotelRegistration from "@/pages/hotel-registration";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
       <ProtectedRoute path="/" component={HomePage} />
       <ProtectedRoute path="/hotels/:id" component={HotelPage} />
       <ProtectedRoute path="/hotels/:id/book" component={BookingPage} />
+      <ProtectedRoute path="/hotels/register" component={HotelRegistration} />
       <Route component={NotFound} />
     </Switch>
   );
